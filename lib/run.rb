@@ -1,8 +1,6 @@
 require 'tty-prompt'
 require 'colorize'
 
-prompt = TTY::Prompt.new
-
 require_relative 'menu'
 require_relative 'user'
 require_relative 'calories'
@@ -10,17 +8,18 @@ require_relative 'motivation'
 
 def help
   system('clear')
-  puts "-------------------HELP-------------------"
-  puts "-m        Will display a motivation quote"
-  puts "user id   Will auto login as user        "
-  puts "------------------------------------------"
+  puts '-------------------HELP-------------------'
+  puts '-m        Will display a motivation quote'
+  puts 'user id   Will auto login as user        '
+  puts '------------------------------------------'
 end
 
 if ARGV[0]
-  if ARGV[0] == '-m'
+  case ARGV[0]
+  when '-m'
     quotes
     exit
-  elsif ARGV[0] == '-h' || ARGV[0] == '--help'
+  when '-h', '--help'
     help
     exit
   end
