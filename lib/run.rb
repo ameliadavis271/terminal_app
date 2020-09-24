@@ -8,9 +8,20 @@ require_relative 'user'
 require_relative 'calories'
 require_relative 'motivation'
 
+def help
+  system('clear')
+  puts "-------------------HELP-------------------"
+  puts "-m        Will display a motivation quote"
+  puts "user id   Will auto login as user        "
+  puts "------------------------------------------"
+end
+
 if ARGV[0]
   if ARGV[0] == '-m'
     quotes
+    exit
+  elsif ARGV[0] == '-h' || ARGV[0] == '--help'
+    help
     exit
   end
 end
