@@ -22,12 +22,18 @@ class Calories
     puts "Please enter how many calories you've had today"
     print "> "
     logged_intake = gets.chomp.to_i
-    if logged_intake >= @intake[0]
+    if logged_intake >= (@intake[0] + 1000)
+      system("clear")
+      puts "Might wanna ease up on the KFC!"
+    elsif logged_intake >= @intake[0]
       system("clear")
       puts "You went over your intake by #{logged_intake - @intake[0]} calories"
-    elsif logged_intake < @intake[0]
+    elsif logged_intake < @intake[0]  && logged_intake > (@intake[0] - 500)
       system("clear")
       puts "You were at a deficit of #{logged_intake - @intake[0]} calories"
+    elsif logged_intake < (@intake[0] - 500)
+      system("clear")
+      puts "Starving yourself is actually not ideal for weight loss!"
     end
   end
 end

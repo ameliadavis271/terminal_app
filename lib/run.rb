@@ -8,6 +8,13 @@ require_relative 'user'
 require_relative 'calories'
 require_relative 'motivation'
 
+if ARGV[0]
+  if ARGV[0] == "-m"
+    quotes
+    exit
+  end
+end
+
 puts "Please enter your name"
 print "> "
 name = gets.chomp
