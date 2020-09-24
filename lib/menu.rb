@@ -20,10 +20,10 @@ end
 
 def menu(user_input)
   loop do
-    Calories.calorie_intake(user_input)
+    Calories::calorie_intake(user_input)
     case selection
     when '1'
-      Calories.log_daily_intake
+      Calories::log_daily_intake
     when '2'
       update_credentials
     when '3'

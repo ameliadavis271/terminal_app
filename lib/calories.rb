@@ -1,7 +1,7 @@
 require 'tty-prompt'
 require 'colorize'
 
-class Calories
+module Calories
   @intake = []
 
   def self.calorie_intake(user_input)
