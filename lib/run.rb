@@ -6,6 +6,7 @@ prompt = TTY::Prompt.new
 require_relative 'menu'
 require_relative 'user'
 require_relative 'calories'
+require_relative 'motivation'
 
 puts "Please enter your name"
 print "> "
@@ -25,4 +26,5 @@ weight = gets.chomp.to_i
 
 user_input = {name: name, gender: gender, age: age, height: height, weight: weight}
 
+system("clear")
 menu(user_input)

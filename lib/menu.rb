@@ -14,15 +14,21 @@ def selection
   end
 end
 
+def quit
+  system("clear")
+  exit
+end
+
 def menu(user_input)
   loop do 
+    calorie_intake(user_input)
     case selection
       when '1'
-        generate_daily_intake(user_input)
+        log_daily_intake
       when '2'
         update_credentials
       when '3'
-        random_quote
+        quotes
       when '4'
         quit
     end
