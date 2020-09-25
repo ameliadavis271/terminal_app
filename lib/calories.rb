@@ -10,11 +10,11 @@ class Calories
     case user[:gender]
     when 'male'
       male_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) + 5
-      puts "Your daily calorie intake is #{male_bmr} calories"
+      puts "Your daily calorie intake is #{male_bmr} calories".colorize(:blue)
       @intake << male_bmr
     when 'female'
       female_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) - 161
-      puts "Your daily calorie intake is #{female_bmr} calories"
+      puts "Your daily calorie intake is #{female_bmr} calories".colorize(:blue)
       @intake << female_bmr
     end
   end
@@ -25,16 +25,16 @@ class Calories
     logged_intake = gets.chomp.to_i
     if logged_intake >= (@intake[0] + 1000)
       system('clear')
-      puts 'Might wanna ease up on the KFC!'
+      puts 'Might wanna ease up on the KFC!'.colorize(:red)
     elsif logged_intake >= @intake[0]
       system('clear')
-      puts "You went over your intake by #{logged_intake - @intake[0]} calories"
+      puts "You went over your intake by #{logged_intake - @intake[0]} calories".colorize(:yellow)
     elsif logged_intake < @intake[0] && logged_intake > (@intake[0] - 500)
       system('clear')
-      puts "You were at a deficit of #{logged_intake - @intake[0]} calories"
+      puts "You were at a deficit of #{logged_intake - @intake[0]} calories".colorize(:green)
     elsif logged_intake < (@intake[0] - 500)
       system('clear')
-      puts 'Starving yourself is actually not ideal for weight loss!'
+      puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
     end
   end
 end

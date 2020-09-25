@@ -10,5 +10,5 @@ def quotes
     'YOU CAN DO IT!!!'
   ]
   system('clear')
-  puts motivation.sample
+  puts motivation.sample.colorize(:light_blue)
 end

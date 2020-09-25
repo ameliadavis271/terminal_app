@@ -3,7 +3,6 @@ require 'colorize'
 require 'json'
 
 module User
-
   def self.gender_selection
     prompt = TTY::Prompt.new
     prompt.select('What is your gender?') do |menu|
