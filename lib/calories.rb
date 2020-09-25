@@ -6,14 +6,14 @@ class Calories
     @intake = []
   end
 
-  def calorie_intake(user_input)
-    case user_input[:gender]
+  def calorie_intake(user)
+    case user[:gender]
     when 'male'
-      male_bmr = (10 * user_input[:weight]) + (6.25 * user_input[:height]) - (5 * user_input[:age]) + 5
+      male_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) + 5
       puts "Your daily calorie intake is #{male_bmr} calories"
       @intake << male_bmr
     when 'female'
-      female_bmr = (10 * user_input[:weight]) + (6.25 * user_input[:height]) - (5 * user_input[:age]) - 161
+      female_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) - 161
       puts "Your daily calorie intake is #{female_bmr} calories"
       @intake << female_bmr
     end
