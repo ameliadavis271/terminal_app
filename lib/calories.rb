@@ -8,11 +8,11 @@ class Calories
 
   def calorie_intake(user)
     case user[:gender]
-    when 'male'
+    when 'Male'
       male_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) + 5
       puts "Your daily calorie intake is #{male_bmr} calories".colorize(:blue)
       @intake << male_bmr
-    when 'female'
+    when 'Female'
       female_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) - 161
       puts "Your daily calorie intake is #{female_bmr} calories".colorize(:blue)
       @intake << female_bmr
@@ -31,7 +31,7 @@ class Calories
       puts "You went over your intake by #{logged_intake - @intake[0]} calories".colorize(:yellow)
     elsif logged_intake < @intake[0] && logged_intake > (@intake[0] - 500)
       system('clear')
-      puts "You were at a deficit of #{logged_intake - @intake[0]} calories".colorize(:green)
+      puts "You were at a deficit of #{@intake[0] - logged_intake} calories".colorize(:green)
     elsif logged_intake < (@intake[0] - 500)
       system('clear')
       puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)

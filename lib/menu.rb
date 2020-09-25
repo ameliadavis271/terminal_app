@@ -30,7 +30,7 @@ module Menus
     loop do
       case op_selection
       when '1'
-        user = User.create_new_user
+        user = User.new_user_input
         main_menu(user)
       when '2'
         login

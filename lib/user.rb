@@ -6,21 +6,22 @@ module User
   def self.gender_selection
     prompt = TTY::Prompt.new
     prompt.select('What is your gender?') do |menu|
-      menu.choice({ name: 'male', value: 'male' })
-      menu.choice({ name: 'female', value: 'female' })
+      menu.choice({ name: 'Male', value: 'Male' })
+      menu.choice({ name: 'Female', value: 'Female' })
     end
   end
 
-  def self.create_new_user
+  def create_user
+    user = User.new_user_input
+    users.JSON << User.new(users.JSON.length + 1)
+  end
+
+  def self.new_user_input
     user = {}
     puts 'Please enter your name'
     print '> '
     name = gets.chomp
     user[:name] = name
-    # puts 'Please enter your gender (male/female)'
-    # print '> '
-    # gender = gets.chomp
-    # user[:gender] = gender
     user[:gender] = gender_selection
     puts 'Please enter your age'
     print '> '
@@ -34,6 +35,8 @@ module User
     print '> '
     weight = gets.chomp.to_i
     user[:weight] = weight
+    system('clear')
+    File.write('users.JSON', JSON.pretty_generate([user]))
     user
   end
 end
