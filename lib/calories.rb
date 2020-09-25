@@ -1,10 +1,12 @@
 require 'tty-prompt'
 require 'colorize'
 
-module Calories
-  @intake = []
+class Calories
+  def initialize
+    @intake = []
+  end
 
-  def self.calorie_intake(user_input)
+  def calorie_intake(user_input)
     case user_input[:gender]
     when 'male'
       male_bmr = (10 * user_input[:weight]) + (6.25 * user_input[:height]) - (5 * user_input[:age]) + 5
@@ -17,7 +19,7 @@ module Calories
     end
   end
 
-  def self.log_daily_intake
+  def log_daily_intake
     puts "Please enter how many calories you've had today"
     print '> '
     logged_intake = gets.chomp.to_i
