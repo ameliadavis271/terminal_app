@@ -1,6 +1,7 @@
 require 'tty-prompt'
 require 'colorize'
 
+require_relative 'details'
 require_relative 'user'
 require_relative 'menu'
 require_relative 'calories'

@@ -3,7 +3,6 @@ require 'colorize'
 require 'json'
 
 class UserData
-
   attr_accessor :name, :gender, :age, :height, :weight
 
   # def initialize(name, gender, age, height, weight)
@@ -14,8 +13,8 @@ class UserData
   #   @weight = weight
   # end
 
-  def to_json(options)
-    {name: name, gender: gender, age: age, height: height, weight: weight}.to_json
+  def to_json(_options)
+    { name: name, gender: gender, age: age, height: height, weight: weight }.to_json
   end
 end
 
@@ -35,11 +34,13 @@ module User
     if File.exist?("data/#{user}.json")
       user_json = JSON.parse(File.read("data/#{user}.json"))
       user = UserData.new
-      user.name = user_json["name"]
-      user.gender = user_json["gender"]
-      user.age = user_json["age"]
-      user.height = user_json["height"]
-      user.weight = user_json["weight"]
+      user.name = user_json['name']
+      user.gender = user_json['gender']
+      user.age = user_json['age']
+      user.height = user_json['height']
+      user.weight = user_json['weight']
+      system('clear')
+      puts "Welcome back #{user.name.capitalize}!!!"
       Menus.main_menu(user)
     else
       system('clear')
@@ -72,8 +73,7 @@ module User
     user
   end
 
-def save_user(user)
-  File.write("data/#{user.name}.json", JSON.pretty_generate(user))
-end
-
+  def save_user(user)
+    File.write("data/#{user.name}.json", JSON.pretty_generate(user))
+  end
 end
