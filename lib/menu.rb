@@ -17,7 +17,7 @@ module Menus
     prompt = TTY::Prompt.new
     prompt.select('What would you like to do?') do |menu|
       menu.choice({ name: 'Log Daily Calories', value: '1' })
-      menu.choice({ name: 'Update Details', value: '2' })
+      menu.choice({ name: 'Update Current Weight', value: '2' })
       menu.choice({ name: 'Needing Inspiration?', value: '3' })
       menu.choice({ name: 'Exit', value: '4' })
     end
