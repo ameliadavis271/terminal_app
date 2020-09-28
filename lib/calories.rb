@@ -7,13 +7,13 @@ class Calories
   end
 
   def calorie_intake(user)
-    case user[:gender]
+    case user.gender
     when 'Male'
-      male_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) + 5
+      male_bmr = (10 * user.weight) + (6.25 * user.height) - (5 * user.age) + 5
       puts "Your daily calorie intake is #{male_bmr} calories".colorize(:blue)
       @intake << male_bmr
     when 'Female'
-      female_bmr = (10 * user[:weight]) + (6.25 * user[:height]) - (5 * user[:age]) - 161
+      female_bmr = (10 * user.weight) + (6.25 * user.height) - (5 * user.age) - 161
       puts "Your daily calorie intake is #{female_bmr} calories".colorize(:blue)
       @intake << female_bmr
     end
@@ -36,5 +36,13 @@ class Calories
       system('clear')
       puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
     end
+  end
+
+  def update_weight(user)
+    puts 'Please enter your weight in kgs'
+    print '> '
+    weight = gets.chomp.to_i
+    user.weight = weight
+    User.save_user(user)
   end
 end

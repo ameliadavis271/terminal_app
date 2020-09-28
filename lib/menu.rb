@@ -33,7 +33,7 @@ module Menus
         user = User.new_user_input
         main_menu(user)
       when '2'
-        login
+        User.user_login
       when '3'
         quit
       end
@@ -48,7 +48,7 @@ module Menus
       when '1'
         calories.log_daily_intake
       when '2'
-        update_credentials
+        calories.update_weight(user)
       when '3'
         quotes
       when '4'
