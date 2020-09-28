@@ -36,6 +36,7 @@ module User
       Menus.main_menu(user)
     else
       system('clear')
+      puts "No user matching that name found! Let's get you started then!".colorize(:light_blue)
       user = User.new_user_input
       Menus.main_menu(user)
     end
@@ -53,7 +54,7 @@ module User
     age = gets.chomp.to_i
     user.age = age
     puts 'Please enter your height in cms'
-    print '>'
+    print '> '
     height = gets.chomp.to_i
     user.height = height
     puts 'Please enter your weight in kgs'
