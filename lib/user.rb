@@ -47,6 +47,7 @@ module User
     puts 'Please enter your name'
     print '> '
     name = gets.chomp.downcase
+    raise ArgumentError, "Name must not be empty" if name.empty?
     user.name = name
     user.gender = gender_selection
     puts 'Please enter your age'
