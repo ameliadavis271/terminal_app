@@ -17,10 +17,10 @@ class Calories
   def terminal_table
     rows = []
     table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you had', 'Calories'], rows: rows
-    table << ["Breakfast", @breakfast, @breakfast_intake]
-    table << ["Lunch", @lunch, @lunch_intake]
-    table << ["Dinner", @dinner, @dinner_intake]
-    table << ["Snacks", @snacks, @snacks_intake]
+    table << ['Breakfast', @breakfast, @breakfast_intake]
+    table << ['Lunch', @lunch, @lunch_intake]
+    table << ['Dinner', @dinner, @dinner_intake]
+    table << ['Snacks', @snacks, @snacks_intake]
     puts table
   end
 
@@ -67,26 +67,23 @@ class Calories
   end
 
   def log_daily_intake
-    while logged_intake > 0
-      puts "Please enter how many calories you've had today"
-      print '> '
-      logged_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
-      if logged_intake >= (@intake[0] + 1000)
-        system('clear')
-        puts 'Might wanna ease up on the KFC!'.colorize(:red)
-      elsif logged_intake >= @intake[0]
-        system('clear')
-        puts "You went over your intake by #{logged_intake - @intake[0]} calories".colorize(:yellow)
-      elsif logged_intake < @intake[0] && logged_intake > (@intake[0] - 500)
-        system('clear')
-        puts "You were at a deficit of #{@intake[0] - logged_intake} calories".colorize(:green)
-      elsif logged_intake < (@intake[0] - 500)
-        system('clear')
-        puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
-      end
-    else
-      Menus.main_menu
-      puts "You must log your daily meals first!"
+    logged_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
+    puts "Please enter how many calories you've had today"
+    print '> '
+    if logged_intake >= (@intake[0] + 1000)
+      system('clear')
+      Quotes.motivational
+      puts 'Might wanna ease up on the KFC!'.colorize(:red)
+    elsif logged_intake >= @intake[0]
+      system('clear')
+      puts "You went over your intake by #{logged_intake - @intake[0]} calories".colorize(:yellow)
+    elsif logged_intake < @intake[0] && logged_intake > (@intake[0] - 500)
+      system('clear')
+      Quotes.inspirational
+      puts "You were at a deficit of #{@intake[0] - logged_intake} calories".colorize(:green)
+    elsif logged_intake < (@intake[0] - 500)
+      system('clear')
+      puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
     end
   end
 end

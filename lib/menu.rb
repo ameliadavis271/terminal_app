@@ -78,7 +78,7 @@ module Menus
       when '3'
         Details.update_weight(user)
       when '4'
-        quotes
+        Quotes.inspirational
       when '5'
         quit
       end

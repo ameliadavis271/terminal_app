@@ -7,7 +7,7 @@ require_relative 'user'
 require_relative 'errors'
 require_relative 'menu'
 require_relative 'calories'
-require_relative 'motivation'
+require_relative 'quotes'
 
 def help
   system('clear')
@@ -20,7 +20,10 @@ end
 if ARGV[0]
   case ARGV[0]
   when '-m'
-    quotes
+    Quotes.motivational
+    exit
+  when '-i'
+    Quotes.inspirational
     exit
   when '-h', '--help'
     help
