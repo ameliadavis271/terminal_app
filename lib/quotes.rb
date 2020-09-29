@@ -2,7 +2,7 @@ require 'tty-prompt'
 require 'colorize'
 
 module Quotes
-module_function
+  module_function
 
   def inspirational
     inspiration = [
@@ -12,12 +12,12 @@ module_function
       "There's no such thing as failure. Either you win, or you learn!",
       "It has to be hard so you'll never ever forget!",
       "Weight loss doesn't begin with a dumb bell. It starts in your head with a decision!",
-      "If you have discipline, drive and determination...nothing is impossible!",
-      "Continue to take care of your body and it'll take care fo you!",
-      "Looking after your health today gives you a better hope for tomorrow!",
-      "The hard days is what makes you stronger",
-      "Slow and steady wins the race!",
-      "Strive for progress, not perfection!"
+      'If you have discipline, drive and determination...nothing is impossible!',
+      "Continue to take care of your body and it'll take care of you!",
+      'Looking after your health today gives you a better hope for tomorrow!',
+      'The hard days is what makes you stronger',
+      'Slow and steady wins the race!',
+      'Strive for progress, not perfection!'
     ]
     system('clear')
     puts inspiration.sample.colorize(:light_blue)

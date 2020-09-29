@@ -11,10 +11,11 @@ require_relative 'quotes'
 
 def help
   system('clear')
-  puts '-------------------HELP-------------------'
-  puts '-m        Will display a motivation quote'
+  puts '---------------------HELP---------------------'
+  puts '-i        Will display an inspirational quote'
+  puts '-m        Will display a motivational quote'
   puts 'user id   Will auto login as user        '
-  puts '------------------------------------------'
+  puts '----------------------------------------------'
 end
 
 if ARGV[0]
