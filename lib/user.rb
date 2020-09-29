@@ -18,22 +18,6 @@ end
 module User
   module_function
 
-  def gender_selection
-    prompt = TTY::Prompt.new
-    prompt.select('What is your gender?') do |menu|
-      menu.choice({ name: 'Male', value: 'Male' })
-      menu.choice({ name: 'Female', value: 'Female' })
-    end
-  end
-
-  def goals_selection
-    prompt = TTY::Prompt.new
-    prompt.select('What is your goal?') do |menu|
-      menu.choice({ name: 'Weight Loss', value: 'Weight Loss' })
-      menu.choice({ name: 'Muscle Gain', value: 'Muscle Gain' })
-    end
-  end
-
   def save_user(user)
     File.write("data/#{user.name}.json", JSON.pretty_generate(user))
   end
@@ -71,7 +55,7 @@ module User
       puts "Can't have an empty user name".colorize(:red)
       Menus.op_menu
     else
-      user.gender = gender_selection
+      user.gender = Prompts.gender_selection
     end
     puts 'Please enter your age'
     print '> '
@@ -85,7 +69,7 @@ module User
     print '> '
     weight = gets.chomp.to_i
     user.weight = weight
-    user.goals = goals_selection
+    user.goals = Prompts.goals_selection
     system('clear')
     save_user(user)
     user
