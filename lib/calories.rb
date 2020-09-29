@@ -4,6 +4,17 @@ require 'colorize'
 class Calories
   def initialize
     @intake = []
+    @breakfast_intake = []
+    @lunch_intake = []
+    @dinner_intake = []
+    @snacks_intake = []
+  end
+
+  def terminal_table
+    rows = []
+
+    table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you had', 'Calories'], rows: rows
+    puts table
   end
 
   def calorie_intake(user)
@@ -19,10 +30,38 @@ class Calories
     end
   end
 
+  def log_daily_meals
+    puts 'What did you have for breakfast?'
+    print '> '
+    breakfast = gets.chomp
+    puts 'How many calories was it?'
+    print '> '
+    @breakfast_intake = gets.chomp.to_i
+    puts 'What did you have for lunch?'
+    print '> '
+    lunch = gets.chomp
+    puts 'How many calories was it?'
+    print '> '
+    @lunch_intake = gets.chomp.to_i
+    puts 'What did you have for dinner?'
+    print '> '
+    dinner = gets.chomp
+    puts 'How many calories was it?'
+    print '> '
+    @dinner_intake = gets.chomp.to_i
+    puts 'What did you have for snacks?'
+    print '> '
+    snacks = gets.chomp
+    puts 'How many calories was it?'
+    print '> '
+    @snacks_intake = gets.chomp.to_i
+    system('clear')
+  end
+
   def log_daily_intake
     puts "Please enter how many calories you've had today"
     print '> '
-    logged_intake = gets.chomp.to_i
+    logged_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
     if logged_intake >= (@intake[0] + 1000)
       system('clear')
       puts 'Might wanna ease up on the KFC!'.colorize(:red)

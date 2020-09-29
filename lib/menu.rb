@@ -1,5 +1,6 @@
 require 'tty-prompt'
 require 'colorize'
+require 'terminal-table'
 
 module Menus
   module_function
@@ -16,10 +17,22 @@ module Menus
   def main_selection
     prompt = TTY::Prompt.new
     prompt.select('What would you like to do?') do |menu|
-      menu.choice({ name: 'Log Daily Calories', value: '1' })
-      menu.choice({ name: 'Update Current Weight', value: '2' })
-      menu.choice({ name: 'Needing Inspiration?', value: '3' })
-      menu.choice({ name: 'Exit', value: '4' })
+      menu.choice({ name: 'Log Daily Meals', value: '1' })
+      menu.choice({ name: 'Compare Calories Intake', value: '2' })
+      menu.choice({ name: 'Update Current Weight', value: '3' })
+      menu.choice({ name: 'Needing Inspiration?', value: '4' })
+      menu.choice({ name: 'Exit', value: '5' })
+    end
+  end
+
+  def meals_selection
+    prompt = TTY::Prompt.new
+    prompt.select('Please select a meal to input') do |menu|
+      menu.choice({ name: 'Breakfast', value: '1' })
+      menu.choice({ name: 'Lunch', value: '2' })
+      menu.choice({ name: 'Dinner', value: '3' })
+      menu.choice({ name: 'Snacks', value: '4' })
+      menu.choice({ name: 'Return to Main Menu', value: '5' })
     end
   end
 
@@ -58,13 +71,33 @@ module Menus
       calories.calorie_intake(user)
       case main_selection
       when '1'
-        calories.log_daily_intake
+        calories.log_daily_meals
       when '2'
-        Details.update_weight(user)
+        calories.log_daily_intake
+        calories.terminal_table
       when '3'
-        quotes
+        Details.update_weight(user)
       when '4'
+        quotes
+      when '5'
         quit
+      end
+    end
+  end
+
+  def meals_menu
+    loop do
+      case meals_selection
+      when '1'
+        calories.log_breakfast_intake
+      when '2'
+        calories.log_lunch_intake
+      when '3'
+        calories.log_dinner_intake
+      when '4'
+        calories.log_snacks_intake
+      when '5'
+        main_menu
       end
     end
   end

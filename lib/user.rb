@@ -6,7 +6,7 @@ class UserData
   attr_accessor :name, :gender, :age, :height, :weight, :goals
 
   def to_json(_options)
-    { name: name, gender: gender, age: age, height: height, weight: weight, goals: goals}.to_json
+    { name: name, gender: gender, age: age, height: height, weight: weight, goals: goals }.to_json
   end
 end
 
@@ -60,9 +60,14 @@ module User
     puts 'Please enter your name'
     print '> '
     name = gets.chomp.downcase
-    raise ArgumentError, "Name must not be empty" if name.empty?
     user.name = name
-    user.gender = gender_selection
+    if name.empty?
+      system('clear')
+      puts "Can't have an empty user name".colorize(:red)
+      Menus.op_menu
+    else
+      user.gender = gender_selection
+    end
     puts 'Please enter your age'
     print '> '
     age = gets.chomp.to_i

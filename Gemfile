@@ -11,3 +11,5 @@ gem "colorize", "~> 0.8.1"
 gem "tty-prompt", "~> 0.22.0"
 
 gem "rubocop", "~> 0.91.1"
+
+gem 'terminal-table', '~> 1.8'
