@@ -3,10 +3,10 @@ require 'colorize'
 require 'json'
 
 class UserData
-  attr_accessor :name, :gender, :age, :height, :weight
+  attr_accessor :name, :gender, :age, :height, :weight, :goals
 
   def to_json(_options)
-    { name: name, gender: gender, age: age, height: height, weight: weight }.to_json
+    { name: name, gender: gender, age: age, height: height, weight: weight, goals: goals}.to_json
   end
 end
 
@@ -21,6 +21,18 @@ module User
     end
   end
 
+  def goals_selection
+    prompt = TTY::Prompt.new
+    prompt.select('What is your goal?') do |menu|
+      menu.choice({ name: 'Weight Loss', value: 'Weight Loss' })
+      menu.choice({ name: 'Muscle Gain', value: 'Muscle Gain' })
+    end
+  end
+
+  def save_user(user)
+    File.write("data/#{user.name}.json", JSON.pretty_generate(user))
+  end
+
   def user_login
     user = gets.chomp
     if File.exist?("data/#{user}.json")
@@ -31,6 +43,7 @@ module User
       user.age = user_json['age']
       user.height = user_json['height']
       user.weight = user_json['weight']
+      user.goals = user_json['goals']
       system('clear')
       puts "Welcome back #{user.name.capitalize}!!!"
       Menus.main_menu(user)
@@ -62,12 +75,9 @@ module User
     print '> '
     weight = gets.chomp.to_i
     user.weight = weight
+    user.goals = goals_selection
     system('clear')
-    File.write("data/#{user.name}.json", JSON.pretty_generate(user))
+    save_user(user)
     user
-  end
-
-  def save_user(user)
-    File.write("data/#{user.name}.json", JSON.pretty_generate(user))
   end
 end
