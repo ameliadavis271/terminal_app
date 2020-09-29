@@ -5,8 +5,13 @@ require 'json'
 class UserData
   attr_accessor :name, :gender, :age, :height, :weight, :goals
 
-  def to_json(_options)
-    { name: name, gender: gender, age: age, height: height, weight: weight, goals: goals }.to_json
+  def to_json(options)
+    { name: name, 
+      gender: gender, 
+      age: age, 
+      height: height, 
+      weight: weight, 
+      goals: goals}.to_json
   end
 end
 

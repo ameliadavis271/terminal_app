@@ -1,5 +1,6 @@
 require 'tty-prompt'
 require 'colorize'
+require 'terminal-table'
 
 require_relative 'details'
 require_relative 'user'
