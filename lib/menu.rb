@@ -53,7 +53,6 @@ module Menus
         calories.log_daily_meals
       when '2'
         calories.log_daily_intake
-        calories.terminal_table
       when '3'
         Details.update_weight(user)
       when '4'

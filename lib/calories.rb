@@ -4,23 +4,26 @@ require 'colorize'
 class Calories
   def initialize
     @intake = []
-    @breakfast = []
-    @lunch = []
-    @dinner = []
-    @snacks = []
-    @breakfast_intake = []
-    @lunch_intake = []
-    @dinner_intake = []
-    @snacks_intake = []
+    @breakfast
+    @lunch
+    @dinner
+    @snacks
+    @breakfast_intake = 0
+    @lunch_intake = 0
+    @dinner_intake = 0
+    @snacks_intake = 0
+    @total_intake = 0
   end
 
   def terminal_table
     rows = []
-    table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you had', 'Calories'], rows: rows
+    table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you ate', 'Calories'], rows: rows, :style => {:width => 80}
     table << ['Breakfast', @breakfast, @breakfast_intake]
     table << ['Lunch', @lunch, @lunch_intake]
     table << ['Dinner', @dinner, @dinner_intake]
     table << ['Snacks', @snacks, @snacks_intake]
+    table << :separator
+    table << ['Total Intake', "", @total_intake]
     puts table
   end
 
@@ -67,23 +70,23 @@ class Calories
   end
 
   def log_daily_intake
-    logged_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
-    puts "Please enter how many calories you've had today"
-    print '> '
-    if logged_intake >= (@intake[0] + 1000)
+    system('clear')
+    @total_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
+    if @total_intake >= (@intake[0] + 1000)
+      system('clear')
+      puts 'Might wanna ease up on the KFC!'.colorize(:red)
+    elsif @total_intake >= @intake[0]
       system('clear')
       Quotes.motivational
-      puts 'Might wanna ease up on the KFC!'.colorize(:red)
-    elsif logged_intake >= @intake[0]
-      system('clear')
-      puts "You went over your intake by #{logged_intake - @intake[0]} calories".colorize(:yellow)
-    elsif logged_intake < @intake[0] && logged_intake > (@intake[0] - 500)
+      puts "You went over your intake by #{@total_intake - @intake[0]} calories".colorize(:yellow)
+    elsif @total_intake < @intake[0] && @total_intake > (@intake[0] - 500)
       system('clear')
       Quotes.inspirational
-      puts "You were at a deficit of #{@intake[0] - logged_intake} calories".colorize(:green)
-    elsif logged_intake < (@intake[0] - 500)
+      puts "You were at a deficit of #{@intake[0] - @total_intake} calories".colorize(:green)
+    elsif @total_intake < (@intake[0] - 500) && @total_intake > 0
       system('clear')
       puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
     end
+    terminal_table
   end
 end
