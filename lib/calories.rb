@@ -4,6 +4,10 @@ require 'colorize'
 class Calories
   def initialize
     @intake = []
+    @breakfast = []
+    @lunch = []
+    @dinner = []
+    @snacks = []
     @breakfast_intake = []
     @lunch_intake = []
     @dinner_intake = []
@@ -12,8 +16,11 @@ class Calories
 
   def terminal_table
     rows = []
-
     table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you had', 'Calories'], rows: rows
+    table << ["breakfast", @breakfast, @breakfast_intake]
+    table << ["lunch", @lunch, @lunch_intake]
+    table << ["dinner", @dinner, @dinner_intake]
+    table << ["snacks", @snacks, @snacks_intake]
     puts table
   end
 
@@ -31,27 +38,29 @@ class Calories
   end
 
   def log_daily_meals
+    daily_meals = {}
+    system('clear')
     puts 'What did you have for breakfast?'
     print '> '
-    breakfast = gets.chomp
+    @breakfast = gets.chomp
     puts 'How many calories was it?'
     print '> '
     @breakfast_intake = gets.chomp.to_i
     puts 'What did you have for lunch?'
     print '> '
-    lunch = gets.chomp
+    @lunch = gets.chomp
     puts 'How many calories was it?'
     print '> '
     @lunch_intake = gets.chomp.to_i
     puts 'What did you have for dinner?'
     print '> '
-    dinner = gets.chomp
+    @dinner = gets.chomp
     puts 'How many calories was it?'
     print '> '
     @dinner_intake = gets.chomp.to_i
     puts 'What did you have for snacks?'
     print '> '
-    snacks = gets.chomp
+    @snacks = gets.chomp
     puts 'How many calories was it?'
     print '> '
     @snacks_intake = gets.chomp.to_i
