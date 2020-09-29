@@ -8,10 +8,10 @@ class Calories
     @lunch
     @dinner
     @snacks
-    @breakfast_intake = []
-    @lunch_intake = []
-    @dinner_intake = []
-    @snacks_intake = []
+    @breakfast_intake = 0
+    @lunch_intake = 0
+    @dinner_intake = 0
+    @snacks_intake = 0
     @total_intake = 0
   end
 
@@ -74,6 +74,7 @@ class Calories
     @total_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
     if @total_intake >= (@intake + 1000)
       system('clear')
+      puts "You went over your intake by #{@total_intake - @intake} calories".colorize(:red)
       puts 'Might wanna ease up on the KFC!'.colorize(:red)
     elsif @total_intake >= @intake
       system('clear')
@@ -85,7 +86,8 @@ class Calories
       puts "You were at a deficit of #{@intake - @total_intake} calories".colorize(:green)
     elsif @total_intake < (@intake - 500) && @total_intake > 0
       system('clear')
-      puts 'Starving yourself is actually not ideal for weight loss!'.colorize(:red)
+      puts "You were at a deficit of #{@intake - @total_intake} calories".colorize(:red)
+      puts "Starving yourself doesn't help. Try remain at a 500 deficit max!".colorize(:red)
     end
     terminal_table
   end
