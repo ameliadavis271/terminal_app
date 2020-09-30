@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+# check for bundler
+
+BUNDLER = `bundler --version`
+p BUNDLER
+
+if BUNDLER
+  `bundle install`
+else
+  puts "You need to install bundler"
+  puts "Installing bundler"
+  `gem install bundler`
+end
+
+system("bundle install")
+puts "Setup Complete!"
