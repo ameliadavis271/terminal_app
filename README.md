@@ -17,3 +17,5 @@ git clone https://github.com/ameliadavis271/terminal_app.git ~/terminal_app
 ```bash
 ~/terminal_app/bin/setup
 ```
+
+5. 

@@ -1,17 +1,14 @@
 #!/usr/bin/env ruby
 
-# check for bundler
+puts "Installing dependencies!"
 
-BUNDLER = `bundler --version`
-p BUNDLER
+p __FILE__
 
-if BUNDLER
-  `bundle install`
-else
-  puts "You need to install bundler"
-  puts "Installing bundler"
-  `gem install bundler`
-end
+# get bin directory absolute path
+filepath = File.dirname __FILE__
 
+# change into bin directory
+Dir.chdir(filepath)
+
+# actually install dependencies
 system("bundle install")
-puts "Setup Complete!"

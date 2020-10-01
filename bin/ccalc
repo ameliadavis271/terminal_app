@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+
+#gems
+require 'tty-prompt'
+require 'colorize'
+require 'terminal-table'
+
+#files
+require_relative '../lib/details'
+require_relative '../lib/user'
+require_relative '../lib/errors'
+require_relative '../lib/prompts'
+require_relative '../lib/menu'
+require_relative '../lib/calories'
+require_relative '../lib/quotes'
+
+def help
+  system('clear')
+  puts '---------------------HELP---------------------'
+  puts '-i        Will display an inspirational quote'
+  puts '-m        Will display a motivational quote'
+  puts 'user id   Will auto login as user        '
+  puts '----------------------------------------------'
+end
+
+if ARGV[0]
+  case ARGV[0]
+  when '-m'
+    Quotes.motivational
+    exit
+  when '-i'
+    Quotes.inspirational
+    exit
+  when '-h', '--help'
+    help
+    exit
+  end
+end
+
+system('clear')
+Menus.op_menu
