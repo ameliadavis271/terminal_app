@@ -1,6 +1,8 @@
 module Details
   module_function
 
+  # enables user to update their weight and outputs how much they've either gained or lost
+  # will also produce extra output based on whether they lost or gained weight
   def update_weight(user)
     weight = user.weight
     user.weight = Errors.ask('Please enter your new weight in kgs')

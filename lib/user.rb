@@ -19,10 +19,13 @@ end
 module User
   module_function
 
+  #saves data to the user file
   def save_user(user)
     File.write("#{Dir.home}/terminal_app/data/#{user.name}.json", JSON.pretty_generate(user))
   end
 
+  # when a user name is entered, if it matches a file name it loads the contents
+  # otherwise forces the user to create a new user
   def user_login
     user = gets.chomp
     if File.exist?("#{Dir.home}/terminal_app/data/#{user}.json")
@@ -45,6 +48,7 @@ module User
     end
   end
 
+  # allows user to create a new user, name must also contain something
   def new_user_input
     user = UserData.new
     puts 'Please enter your name'

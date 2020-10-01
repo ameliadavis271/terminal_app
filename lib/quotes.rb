@@ -4,6 +4,7 @@ require 'colorize'
 module Quotes
   module_function
 
+  # a list of inspirational quotes, one will be pulled at random as a sample when method called
   def inspirational
     inspiration = [
       "It does not matter how slow you go, as long as you don't stop!",
@@ -23,6 +24,7 @@ module Quotes
     puts inspiration.sample.colorize(:light_blue)
   end
 
+  # a list of motivational quotes, one will be pulled at random as a sample when method called
   def motivational
     motivation = [
       "Don't let a stumble in the road be the end of your journey!",

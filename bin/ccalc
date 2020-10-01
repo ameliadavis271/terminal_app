@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 
-#gems
+# gems
 require 'tty-prompt'
 require 'colorize'
 require 'terminal-table'
 require 'byebug'
 
-#files
+# files
 require_relative '../lib/details'
 require_relative '../lib/user'
 require_relative '../lib/errors'

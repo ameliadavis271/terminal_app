@@ -1,6 +1,7 @@
 module Prompts
   module_function
 
+  # this prompt is used to prevent mispelling of either of 'male' or 'female' when creating a user
   def gender_selection
     prompt = TTY::Prompt.new
     prompt.select('What is your gender?') do |menu|
@@ -9,6 +10,7 @@ module Prompts
     end
   end
 
+  # this prompt is used to prevent mispelling of either 'weight loss' or 'muscle gain' when creating a user
   def goals_selection
     prompt = TTY::Prompt.new
     prompt.select('What is your goal?') do |menu|
@@ -17,6 +19,7 @@ module Prompts
     end
   end
 
+  #opening menu selection
   def op_selection
     prompt = TTY::Prompt.new
     prompt.select('Welcome! Please select an option') do |menu|
@@ -26,6 +29,7 @@ module Prompts
     end
   end
 
+  # main menu slection
   def main_selection
     prompt = TTY::Prompt.new
     prompt.select('What would you like to do?') do |menu|
@@ -36,5 +40,4 @@ module Prompts
       menu.choice({ name: 'Exit', value: '5' })
     end
   end
-
 end

@@ -2,12 +2,13 @@ require 'tty-prompt'
 require 'colorize'
 
 class Calories
+  # various instance variables used to pull values from calculations to another
   def initialize
     @intake = []
-    @breakfast
-    @lunch
-    @dinner
-    @snacks
+    @breakfast = nil
+    @lunch = nil
+    @dinner = nil
+    @snacks = nil
     @breakfast_intake = 0
     @lunch_intake = 0
     @dinner_intake = 0
@@ -15,18 +16,20 @@ class Calories
     @total_intake = 0
   end
 
+  # displays output of inputted meals and their calories, will appear empty if nothing logged
   def terminal_table
     rows = []
-    table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you ate', 'Calories'], rows: rows, :style => {:width => 80}
+    table = Terminal::Table.new title: 'Daily Calorie Intake', headings: ['Meal', 'What you ate', 'Calories'], rows: rows, style: { width: 80 }
     table << ['Breakfast', @breakfast, @breakfast_intake]
     table << ['Lunch', @lunch, @lunch_intake]
     table << ['Dinner', @dinner, @dinner_intake]
     table << ['Snacks', @snacks, @snacks_intake]
     table << :separator
-    table << ['Total Intake', "", @total_intake]
+    table << ['Total Intake', '', @total_intake]
     puts table
   end
 
+  # calculations to determine a user's daily calorie intake
   def calorie_intake(user)
     case user.gender
     when 'Male'
@@ -40,6 +43,7 @@ class Calories
     end
   end
 
+  # inputting daily meals
   def log_daily_meals
     system('clear')
     puts 'What did you have for breakfast?'
@@ -61,6 +65,8 @@ class Calories
     system('clear')
   end
 
+  # calculations to determine the difference between logged intake against recommended calorie intake 
+  # also gives various outputs based on the difference
   def log_daily_intake
     system('clear')
     @total_intake = @breakfast_intake.to_i + @lunch_intake.to_i + @dinner_intake.to_i + @snacks_intake.to_i

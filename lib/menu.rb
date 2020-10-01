@@ -5,11 +5,13 @@ require 'terminal-table'
 module Menus
   module_function
 
+  #small method to close app and clear terminal to a reset state
   def quit
     system('clear')
     exit
   end
 
+  #opening menu to create a new user or login as one
   def op_menu
     loop do
       case Prompts.op_selection
@@ -24,6 +26,7 @@ module Menus
     end
   end
 
+  # main menu for a user to do various actions
   def main_menu(user)
     calories = Calories.new
     loop do
