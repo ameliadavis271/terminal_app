@@ -15,3 +15,5 @@ gem 'terminal-table', '~> 1.8'
 gem "rubocop", "~> 0.91.1"
 
 gem 'byebug', '~> 9.0', '>= 9.0.6'
+
+gem "rspec", "~> 3.9"
