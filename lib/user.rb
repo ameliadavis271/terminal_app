@@ -20,7 +20,7 @@ module User
   module_function
 
   def save_user(user)
-    File.write("#{Dir.home}/terminal_app/data/#{user}.json", JSON.pretty_generate(user))
+    File.write("#{Dir.home}/terminal_app/data/#{user.name}.json", JSON.pretty_generate(user))
   end
 
   def user_login
@@ -58,18 +58,9 @@ module User
     else
       user.gender = Prompts.gender_selection
     end
-    puts 'Please enter your age'
-    print '> '
-    age = gets.chomp.to_i
-    user.age = age
-    puts 'Please enter your height in cms'
-    print '> '
-    height = gets.chomp.to_i
-    user.height = height
-    puts 'Please enter your weight in kgs'
-    print '> '
-    weight = gets.chomp.to_i
-    user.weight = weight
+    user.age = Errors.ask('Please enter your age')
+    user.height = Errors.ask('Please enter your height in cms')
+    user.weight = Errors.ask('Please enter your weight in kgs')
     user.goals = Prompts.goals_selection
     system('clear')
     save_user(user)
