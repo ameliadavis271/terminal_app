@@ -1,6 +1,7 @@
 require 'tty-prompt'
 require 'colorize'
 require 'json'
+require 'byebug'
 
 class UserData
   attr_accessor :name, :gender, :age, :height, :weight, :goals
@@ -19,13 +20,13 @@ module User
   module_function
 
   def save_user(user)
-    File.write("data/#{user.name}.json", JSON.pretty_generate(user))
+    File.write("#{Dir.home}/terminal_app/data/#{user}.json", JSON.pretty_generate(user))
   end
 
   def user_login
     user = gets.chomp
-    if File.exist?("data/#{user}.json")
-      user_json = JSON.parse(File.read("data/#{user}.json"))
+    if File.exist?("#{Dir.home}/terminal_app/data/#{user}.json")
+      user_json = JSON.parse(File.read("#{Dir.home}/terminal_app/data/#{user}.json"))
       user = UserData.new
       user.name = user_json['name']
       user.gender = user_json['gender']

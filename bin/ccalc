@@ -4,6 +4,7 @@
 require 'tty-prompt'
 require 'colorize'
 require 'terminal-table'
+require 'byebug'
 
 #files
 require_relative '../lib/details'
