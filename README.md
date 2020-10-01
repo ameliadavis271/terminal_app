@@ -18,4 +18,18 @@ git clone https://github.com/ameliadavis271/terminal_app.git ~/terminal_app
 ~/terminal_app/bin/setup
 ```
 
-5. 
+5. Open your `.bash_profile` in text editor
+
+6. Add this line
+
+```bash
+export PATH=$PATH:$HOME/terminal_app/bin
+```
+
+7. Restart your terminal
+
+8. Run the `ccalc` executable to start the app
+
+```bash
+ccalc
+```
