@@ -15,7 +15,6 @@ module Details
       Quotes.motivational
       puts "Looks like you've put on #{user.weight.to_i - weight.to_i} kgs".colorize(:red)
     end
-    # user.weight = weight
     User.save_user(user)
   end
 end

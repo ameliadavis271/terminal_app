@@ -45,33 +45,25 @@ class Calories
     puts 'What did you have for breakfast?'
     print '> '
     @breakfast = gets.chomp
-    puts 'How many calories was it?'
-    print '> '
-    @breakfast_intake = gets.chomp.to_i
+    @breakfast_intake = Errors.ask('How many calories were in your breakfast?')
     puts 'What did you have for lunch?'
     print '> '
     @lunch = gets.chomp
-    puts 'How many calories was it?'
-    print '> '
-    @lunch_intake = gets.chomp.to_i
+    @lunch_intake = Errors.ask('How many calories were in your lunch?')
     puts 'What did you have for dinner?'
     print '> '
     @dinner = gets.chomp
-    puts 'How many calories was it?'
-    print '> '
-    @dinner_intake = gets.chomp.to_i
+    @dinner_intake = Errors.ask('How many calories were in your dinner?')
     puts 'What did you have for snacks?'
     print '> '
     @snacks = gets.chomp
-    puts 'How many calories was it?'
-    print '> '
-    @snacks_intake = gets.chomp.to_i
+    @snacks_intake = Errors.ask('How many calories were in your snacks?')
     system('clear')
   end
 
   def log_daily_intake
     system('clear')
-    @total_intake = @breakfast_intake + @lunch_intake + @dinner_intake + @snacks_intake
+    @total_intake = @breakfast_intake.to_i + @lunch_intake.to_i + @dinner_intake.to_i + @snacks_intake.to_i
     if @total_intake >= (@intake + 1000)
       system('clear')
       puts "You went over your intake by #{@total_intake - @intake} calories".colorize(:red)
