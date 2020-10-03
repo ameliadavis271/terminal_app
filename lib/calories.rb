@@ -65,7 +65,7 @@ class Calories
     system('clear')
   end
 
-  # calculations to determine the difference between logged intake against recommended calorie intake 
+  # calculations to determine the difference between logged intake against recommended calorie intake
   # also gives various outputs based on the difference
   def log_daily_intake
     system('clear')

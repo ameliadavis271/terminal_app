@@ -10,16 +10,7 @@ module Prompts
     end
   end
 
-  # this prompt is used to prevent mispelling of either 'weight loss' or 'muscle gain' when creating a user
-  def goals_selection
-    prompt = TTY::Prompt.new
-    prompt.select('What is your goal?') do |menu|
-      menu.choice({ name: 'Weight Loss', value: 'Weight Loss' })
-      menu.choice({ name: 'Muscle Gain', value: 'Muscle Gain' })
-    end
-  end
-
-  #opening menu selection
+  # opening menu selection
   def op_selection
     prompt = TTY::Prompt.new
     prompt.select('Welcome! Please select an option') do |menu|

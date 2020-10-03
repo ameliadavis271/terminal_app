@@ -27,9 +27,9 @@ def help
 end
 
 def calculations
-  puts "Below is the calculation that determines your calorie intake:"
-  puts "For men: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (y) + 5" 
-  puts "For women: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (y) – 161."
+  puts 'Below is the calculation that determines your calorie intake:'
+  puts 'For men: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (y) + 5'
+  puts 'For women: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (y) – 161.'
 end
 
 if ARGV[0]
@@ -39,12 +39,12 @@ if ARGV[0]
     exit
   when '-i'
     Quotes.inspirational
-    exit 
+    exit
   when '-c'
-    calculations 
+    calculations
     exit
   when '-r'
-    puts "https://github.com/ameliadavis271/terminal_app"
+    puts 'https://github.com/ameliadavis271/terminal_app'
     exit
   when '-h', '--help'
     help

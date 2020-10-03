@@ -11,15 +11,14 @@ class UserData
       gender: gender,
       age: age,
       height: height,
-      weight: weight,
-      goals: goals }.to_json
+      weight: weight }.to_json
   end
 end
 
 module User
   module_function
 
-  #saves data to the user file
+  # saves data to the user file
   def save_user(user)
     File.write("#{Dir.home}/terminal_app/data/#{user.name}.json", JSON.pretty_generate(user))
   end
@@ -36,7 +35,6 @@ module User
       user.age = user_json['age']
       user.height = user_json['height']
       user.weight = user_json['weight']
-      user.goals = user_json['goals']
       system('clear')
       puts "Welcome back #{user.name.capitalize}!!!"
       Menus.main_menu(user)
@@ -65,7 +63,6 @@ module User
     user.age = Errors.ask('Please enter your age')
     user.height = Errors.ask('Please enter your height in cms')
     user.weight = Errors.ask('Please enter your weight in kgs')
-    user.goals = Prompts.goals_selection
     system('clear')
     save_user(user)
     user
